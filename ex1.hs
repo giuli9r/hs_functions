@@ -1,6 +1,4 @@
 --										Proyecto 1
--- Giuliano Rossetti    38.108.666
-
 -- Ejercicio 1
 
 -- a)
