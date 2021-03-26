@@ -13,7 +13,7 @@ esPositivo x = x>0
 
 -- c)
 esVocal :: Char -> Bool
-esVocal c = elem (c) (['a', 'e', 'i', 'o', 'u'])
+esVocal c = c `elem` ['a', 'e', 'i', 'o', 'u']
 
 -- Ejercicio 2. Programa usando recursion o composicion.
 
@@ -47,7 +47,7 @@ promedio xs = div (sumatoria xs) (length xs)
 
 pertenece :: Int -> [Int] -> Bool
 pertenece _ [] = False
-pertenece x (y:ys) | (x == y) = True
+pertenece x (y:ys) | x == y = True
                    | otherwise = pertenece x ys
 
 
@@ -55,9 +55,9 @@ pertenece x (y:ys) | (x == y) = True
 
 encuentra:: Int -> [(Int,String)] -> String
 encuentra _ [] = ""
-encuentra x ((y,s):ss) | (x == y) = s
+encuentra x ((y,s):ss) | x == y = s
                        | otherwise = encuentra x ss
- 
+
 
 
 -- Ejercicio 5
@@ -65,23 +65,23 @@ encuentra x ((y,s):ss) | (x == y) = s
 -- a)
 paratodo' :: [a] -> (a -> Bool) -> Bool
 paratodo' [] _ = True
-paratodo' (x:xs) t = (t x) && (paratodo' xs t)
+paratodo' (x:xs) t = t x && paratodo' xs t
 
 -- b)
 existe' :: [a] -> (a -> Bool) -> Bool
 existe' [] _ = False
-existe' (x:xs) t = (t x) || existe' xs t
+existe' (x:xs) t = t x || existe' xs t
 
 -- c)
 --sumatoria' :: [a] -> (a -> Int) -> Int
 sumatoria' :: Num p => [a] -> (a -> p) -> p
 sumatoria' [] _ = 0
-sumatoria' (x:xs) t = (t x) + sumatoria' xs t
+sumatoria' (x:xs) t = t x + sumatoria' xs t
 
 -- d) 
 productoria' :: [a] -> (a -> Int) -> Int
 productoria' [] _ = 1
-productoria' (x:xs) t = (t x) * sumatoria' xs t 
+productoria' (x:xs) t = t x * sumatoria' xs t
 
 
 -- Ejercicio 6
@@ -101,7 +101,7 @@ todosPares xs = paratodo' xs esPar
 
 -- b)
 multiplo :: Int -> Int -> Bool
-multiplo y n = (n `mod` y == 0) 
+multiplo y n = (n `mod` y == 0)
 
 hayMultiplo :: Int -> [Int] -> Bool
 hayMultiplo y xs = existe' xs (multiplo y)
@@ -112,7 +112,7 @@ sumaCuadrados n = sumatoria' [1..n] (^2)
 
 -- d)
 factorial' :: Int -> Int
-factorial' n = productoria [1..n] 
+factorial' n = productoria [1..n]
 
 -- e)
 multiplicaPares :: [Int] -> Int
